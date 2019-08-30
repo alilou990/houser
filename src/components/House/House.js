@@ -1,15 +1,16 @@
 import React from 'react'
 
+import './House.css'
+
 const House = (props) => {
     return (
-        <div>
-            <h1>House</h1>
-            <label>Property Name:</label>
-            <label>Address:</label>
-            <label>City:</label>
-            <label>State:</label>
-            <label>Zip:</label>
-        </div>
+            <div className='house-container'>
+                <label>Property Name: {props.name}</label>
+                <label>Address: {props.address}</label>
+                <label>City: {props.city}</label>
+                <label>State: {props.state}</label>
+                <label>Zip: {props.zip}</label>
+            </div>
     )
 }
 

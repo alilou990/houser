@@ -34,17 +34,20 @@ export default class Dashboard extends Component {
 
     render() {
        const mappedHouses = this.state.houses.map((house, i) => {
-           return <House house={house} key={i} getHouses={this.getHouses}/>
+           return <House house={house} key={i} getHouses={this.getHouses} name={house.name} address={house.address} city={house.city} state={house.state} zip={house.zip}/>
        })
 
         return (
             <div className="outer-dash-container">
-                <div className="dash-contaienr">
+                <div className="dash-container">
                     <div className="dash-sub-header">
                     <h1 className='dash-name'>Dashboard</h1>
                     <Link to='/wizard'> <button className='add-button'>Add New Property</button></Link>
                     </div>
-                    {mappedHouses}
+                    <h1 className='listing-text'>Home Listings</h1>
+                    <div className="outer-house-container">
+                        {mappedHouses}
+                    </div>
                 </div>
             </div>
         )

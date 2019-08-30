@@ -5,11 +5,10 @@
     justify-content: center;
 }
 
-.dash-contaienr {
+.dash-container {
     width: 50%;
     min-height: 100vh;
-    background: #E5F4EC
-
+    background: #E5F4EC;
 }
 
 .dash-sub-header {
@@ -30,4 +29,17 @@
     padding: 10px;
     font-size: 20px;
     font-weight: bolder;
+}
+
+.outer-house-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listing-text {
+    font-weight: bolder;
+    margin: 30px;
 }

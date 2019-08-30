@@ -1,0 +1,14 @@
+.outer-wizard-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: blue
+}
+
+.wizard-container {
+    width: 50%;
+    min-height: 100vh;
+    background: #E5F4EC;
+}
