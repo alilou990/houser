@@ -30,7 +30,7 @@ massive(CONNECTION_STRING)
     })
 
 //end points
-
+app.get('/api/houses', ctrl.getHouses)
 
 
 app.listen(SERVER_PORT, () => {

@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
+import {HashRouter as Router} from 'react-router-dom'
 
-//component imports
-import Dashboard from './components/Dashboard/Dashboard'
-import Wizard from './components/Wizard/Wizard'
+//route
+import routes from './routes'
+
+//components
 import Header from './components/Header/Header'
+
+//stylesheet
+import 'reset-css'
+import './App.css'
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-          <Dashboard />
-          <Wizard />
-          <Header />
-      </div>
+     <Router>
+        <div className='main-container'>
+            <Header />
+            {routes}
+        </div>
+        
+    </Router>
     )
   }
 }

@@ -1,10 +1,13 @@
 import React from 'react'
 
+//stylesheet
+import './Header.css'
+
 const Header = () => {
     return (
-        <div>
-            <h1>Header</h1>
-        </div>
+        <header className="header-container">
+            <h1>Houser</h1>
+        </header>
     )
 }
 
