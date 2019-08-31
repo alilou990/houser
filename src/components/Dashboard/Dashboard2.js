@@ -32,9 +32,19 @@ export default class Dashboard extends Component {
             })
     }
 
+    deleteHouse = (id) => {
+        axios.delete(`/api/house/${id}`)
+            .then(res => {
+                this.getHouses()
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     render() {
        const mappedHouses = this.state.houses.map((house, i) => {
-           return <House house={house} key={i} getHouses={this.getHouses} name={house.name} address={house.address} city={house.city} state={house.state} zip={house.zip}/>
+           return <House house={house} key={i} getHouses={this.getHouses} id={house.id} name={house.name} address={house.address} city={house.city} state={house.state} zip={house.zip} deleteHouse={this.deleteHouse}/>
        })
 
         return (
@@ -42,7 +52,7 @@ export default class Dashboard extends Component {
                 <div className="dash-container">
                     <div className="dash-sub-header">
                     <h1 className='dash-name'>Dashboard</h1>
-                    <Link to='/wizard'> <button className='add-button'>Add New Property</button></Link>
+                    <Link to='/wizard/step1'> <button className='add-button'>Add New Property</button></Link>
                     </div>
                     <h1 className='listing-text'>Home Listings</h1>
                     <div className="outer-house-container">

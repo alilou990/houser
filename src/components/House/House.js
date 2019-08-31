@@ -5,6 +5,7 @@ import './House.css'
 const House = (props) => {
     return (
             <div className='house-container'>
+                <button onClick={() => props.deleteHouse(props.house.id)}>Delete</button>
                 <label>Property Name: {props.name}</label>
                 <label>Address: {props.address}</label>
                 <label>City: {props.city}</label>

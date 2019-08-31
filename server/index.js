@@ -31,7 +31,8 @@ massive(CONNECTION_STRING)
 
 //end points
 app.get('/api/houses', ctrl.getHouses)
-app.post('api/houses', ctrl.addHouse)
+app.post('/api/houses', ctrl.addHouse)
+app.delete('/api/house/:id', ctrl.deleteHouse)
 
 
 app.listen(SERVER_PORT, () => {

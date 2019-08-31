@@ -9,8 +9,8 @@ const getHouses = (req, res) => {
 }
 
 const addHouse = (req, res) => {
-    const dbInstance = req.app.get('db')
     const {name, address, city, state, zip} = req.body
+    const dbInstance = req.app.get('db')
     dbInstance.add_house([name, address, city, state, zip])
         .then(() => res.status(200).send('House was added!'))
         .catch(error => {
@@ -19,7 +19,19 @@ const addHouse = (req, res) => {
         })
 }
 
+const deleteHouse = (req, res) => {
+    const {id} = req.params
+    const dbInstance = req.app.get('db')
+    dbInstance.delete_house([id])
+        .then(() => res.status(200).send('House was deleted!'))
+        .catch(error => {
+            res.sendStatus(500)
+            console.log(error)
+        })
+}
+
 module.exports = {
     getHouses,
-    addHouse
+    addHouse,
+    deleteHouse
 }
