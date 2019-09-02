@@ -1,6 +1,6 @@
 
 .house-container {
-    height: 200px;
+    height: 220px;
     width: 95%;
     background: #DEDEDE;
     margin: 20px 0px;
@@ -23,6 +23,11 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 10px;
+    
+}
+
+.house-info-text {
+    font-size: 15px;
 }
 
 .house-info-two {
