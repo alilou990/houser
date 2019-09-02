@@ -3,15 +3,28 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 //stylesheets
-import './Wizard.css'
+// import './Wizard.css'
+
+//redux
+import store, {UPDATE_MORTGAGE, UPDATE_RENT, CANCEL} from "../../store"
 
 export default class Step3 extends Component {
     constructor(){
         super();
+        const reduxState = store.getState()
         this.state = {
-            mortgage: 0,
-            rent: 0
+            mortgage: reduxState.mortgage,
+            rent: reduxState.rent
         }
+    }
+
+    componentDidMount(){
+        store.subscribe(() => {
+            const reduxState = store.getState()
+            this.setState({
+                img: reduxState.img
+            })
+        })
     }
 
     handleOnChange = (event) => {
@@ -20,13 +33,30 @@ export default class Step3 extends Component {
         })
     }
 
-    addHouse = (event) => {
+    saveChanges = () => {
+        store.dispatch({
+            type: UPDATE_MORTGAGE,
+            payload: this.state.mortgage
+        })
+        store.dispatch({
+            type: UPDATE_RENT,
+            payload: this.state.rent
+        })
+    }
+
+
+    addHouse = () => {
+        const {name, address, city, state, zip, img} = store.getState()
+        const {mortgage, rent} = this.state
         const body = {
-            name: this.state.name,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip
+            name, 
+            address, 
+            city, 
+            state, 
+            zip, 
+            img, 
+            mortgage,
+            rent
         }
         axios.post('/api/houses', body)
             .then(res => {
@@ -35,6 +65,9 @@ export default class Step3 extends Component {
             .catch(err => {
                 console.log(err)
             })
+        store.dispatch({
+            type: CANCEL
+        })
     }
 
     render() {
@@ -47,7 +80,7 @@ export default class Step3 extends Component {
                     <input type='text' name='mortgage' onChange={this.handleOnChange} value={this.state.mortgage}/>
                     <label>Rent:</label>
                     <input type='text' name='rent' onChange={this.handleOnChange} value={this.state.rent}/>
-                   <Link to='/wizard/step2'><button>Previous Step</button></Link>
+                   <Link to='/wizard/step2'><button onClick={this.saveChanges}>Previous Step</button></Link>
                     <button onClick={this.addHouse}>Complete</button>
                 </div>
         )

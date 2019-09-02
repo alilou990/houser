@@ -1,10 +1,32 @@
 
 .house-container {
-    height: 150px;
+    height: 200px;
     width: 95%;
     background: #DEDEDE;
     margin: 20px 0px;
     display: flex;
-    flex-direction: column;
     justify-content: space-around
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+}
+
+.img-container > img {
+    height: 150px;
+    width: 250px;
+}
+
+.house-info-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.house-info-two {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }

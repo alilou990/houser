@@ -1,0 +1,24 @@
+.step-one-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.house-info-one{
+    height: 200px;
+    width: 80%;
+    display: flex;
+}
+
+.house-info-one > label {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.house-one-info > input{
+    border: solid 1px #519872;
+    border-radius: 2px;
+    height: 25px;
+}

@@ -1,14 +1,35 @@
 .outer-wizard-container {
-    width: 100%;
+    width: 48%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background: blue
+    align-items: center;
+    background: #E5F4EC;
+    padding: 10px;
 }
 
-.wizard-container {
-    width: 50%;
-    min-height: 100vh;
-    background: #E5F4EC;
+.wizard-sub-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.wizard-sub-header > h1{
+    margin: 20px;
+}
+
+.cancel-btn{
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 10px;
+    background: #FEC2C2
+}
+
+.cancel-btn:hover{
+    
 }

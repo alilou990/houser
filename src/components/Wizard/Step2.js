@@ -2,14 +2,27 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 //stylesheets
-import './Wizard.css'
+// import './Wizard.css'
+
+//redux
+import store, {UPDATE_IMG} from '../../store'
 
 export default class Step2 extends Component {
     constructor(){
         super();
+        const reduxState = store.getState();
         this.state = {
-            img: ''
+            img: reduxState.img
         }
+    }
+
+    componentDidMount(){
+        store.subscribe(() => {
+            const reduxState = store.getState()
+                this.setState({
+                    img: reduxState.img
+                })
+        })
     }
 
     handleOnChange = (event) => {
@@ -17,6 +30,14 @@ export default class Step2 extends Component {
             [event.target.name]: event.target.value
         })
     }
+
+    saveChanges = () => {
+        store.dispatch({
+            type: UPDATE_IMG,
+            payload: this.state.img
+        })
+    }
+
     render() {
         return (
                 <div className='wizard-conatiner'>
@@ -25,8 +46,8 @@ export default class Step2 extends Component {
                     </div>
                     <label>Image:</label>
                     <input type='url' name='img' onChange={this.handleOnChange} value={this.state.img}/>
-                   <Link to="/wizard/step1"><button>Previous Step</button></Link>
-                    <Link to='/wizard/step3'><button onClick={this.addHouse}>Next Step</button></Link>
+                   <Link to="/wizard/step1"><button onClick={this.saveChanges}>Previous Step</button></Link>
+                    <Link to='/wizard/step3'><button onClick={this.saveChanges}>Next Step</button></Link>
                 </div>
         )
     }
